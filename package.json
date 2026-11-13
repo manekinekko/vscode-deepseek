@@ -4,7 +4,7 @@
 	"publisher": "wassimdev",
 	"icon": "deepseek.png",
 	"displayName": "DeepSeek for GitHub Copilot",
-	"description": "Run DeepSeek models in your GitHub Copilot Chat",
+	"description": "DeepSeek for GitHub Copilot; the @deepseek chat participant has been removed without a replacement.",
 	"version": "0.0.5",
 	"galleryBanner": {
         "color": "#ffffff",
@@ -42,32 +42,6 @@
 	],
 	"activationEvents": [],
 	"main": "./dist/extension.js",
-	"contributes": {
-		"chatParticipants": [
-			{
-				"id": "dev.wassim.agents.deepseek",
-				"fullName": "DeepSeek",
-				"name": "deepseek",
-				"description": "I am your DeepSeek assistant",
-				"isSticky": true
-			}
-		],
-		"configuration": {
-			"title": "DeepSeek",
-			"properties": {
-				"deepseek.model.name": {
-					"type": "string",
-					"default": "deepseek-coder:1.3b",
-					"description": "The model name to use for DeepSeek"
-				},
-				"deepseek.ollama.host": {
-					"type": "string",
-					"default": "http://localhost:11434",
-					"description": "The Ollama host to use for DeepSeek"
-				}
-			}
-		}
-	},
 	"scripts": {
 		"vscode:prepublish": "npm run bundle",
 		"compile": "npm run check-types && npm run lint && node esbuild.js",
@@ -84,10 +58,7 @@
 		"test": "vscode-test"
 	},
 	"dependencies": {
-		"@vscode/chat-extension-utils": "^0.0.0-alpha.5",
-		"@vscode/prompt-tsx": "^0.3.0-alpha.17",
-		"@vscode/vsce": "^3.2.2",
-		"ollama": "^0.5.12"
+		"@vscode/vsce": "^3.2.2"
 	},
 	"devDependencies": {
 		"@types/mocha": "^10.0.10",

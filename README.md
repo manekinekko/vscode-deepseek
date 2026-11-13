@@ -13,18 +13,15 @@
     <img alt="Static Badge" src="https://img.shields.io/badge/version-preview-pink?style=flat-square"/>
 </h3>
 
-This extension allows you to interact with the DeepSeek models for Github Copilot Chat, fully locally and offline. It uses Ollama under the hood to provide a seamless experience.
+## Chat participant removal
 
-## How to use
+The `@deepseek` chat participant has been removed without a replacement. The extension is retained and can still be installed, but it no longer provides chat functionality, connects to Ollama, or downloads models.
 
-1. Install the extension from the Visual Studio Code Marketplace
-2. Open Github Copilot Chat panel
-3. In the chat, type `@deepseek` followed by your prompt
+This change prepares for the [Local harness removal scheduled for February 2027](https://code.visualstudio.com/docs/agents/run/move-to-copilot). Chat participants are not supported in the Copilot harness. See [issue #9](https://github.com/manekinekko/vscode-deepseek/issues/9) and the [chat participant migration guide](https://code.visualstudio.com/docs/agent-customization/migrate-customizations#_replace-chat-participants) for background.
 
-![demo](./deepseek-vscode-demo.png)
+The `deepseek.model.name` and `deepseek.ollama.host` settings have also been removed. Existing values in `settings.json` are no longer used and can be deleted. Ollama is no longer required by this extension.
 
-> [!NOTE] 
-> During the first run, the extension will download the model. This may take a few minutes.
+These changes apply to the source in this repository and its next release; Marketplace version 0.0.5 still contains the original participant until an updated version is published.
 
 ## Build from source
 
@@ -32,29 +29,4 @@ This extension allows you to interact with the DeepSeek models for Github Copilo
 2. Run `npm install`
 3. Run `npm run package`
 4. Install the generated `.vsix` file in Visual Studio Code
-
-## Settings
-
-You can configure the extension by opening the settings panel (or `settings.json`) and editing the following settings:
-
-```json
-
-{
-    "deepseek.model.name": "deepseek-coder:1.3b",
-    "deepseek.ollama.host": "http://localhost:11434"
-}
-```
-
-> [!NOTE] 
-> You can find a list of available DeepSeek models at [ollama.com](https://ollama.com/search?q=deepseek).
-
-## Limitations
-
-Currently, the extension does not have access to your files, so it cannot provide context-aware completions. This will be fixed in future versions.
-
-To remedy this, you can copy the code you want to complete and paste it in the chat.
-
-## Requirements
-
-This extension requires the Ollama app to be installed on your system. You can install it by following the instructions from [ollama.com](https://ollama.com/).
 
