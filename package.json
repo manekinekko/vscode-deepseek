@@ -3,9 +3,9 @@
 	"preview": true,
 	"publisher": "wassimdev",
 	"icon": "deepseek.png",
-	"displayName": "DeepSeek for GitHub Copilot",
-	"description": "DeepSeek for GitHub Copilot; the @deepseek chat participant has been removed without a replacement.",
-	"version": "0.0.5",
+	"displayName": "DeepSeek for GitHub Copilot (Deprecated)",
+	"description": "Deprecated. The @deepseek chat participant has been removed without a replacement. This extension can be uninstalled.",
+	"version": "0.0.6",
 	"galleryBanner": {
         "color": "#ffffff",
         "theme": "light"
@@ -40,7 +40,18 @@
 		"AI",
 		"Chat"
 	],
-	"activationEvents": [],
+	"activationEvents": [
+		"*"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"command": "deepseek.showDeprecationInformation",
+				"title": "Show Deprecation Information",
+				"category": "DeepSeek"
+			}
+		]
+	},
 	"main": "./dist/extension.js",
 	"scripts": {
 		"vscode:prepublish": "npm run bundle",
@@ -49,6 +60,7 @@
 		"watch:esbuild": "node esbuild.js --watch",
 		"watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
 		"package": "vsce package",
+		"publish:marketplace": "vsce publish",
 		"bundle": "npm run check-types && npm run lint && node esbuild.js --production",
 		"compile-tests": "tsc -p . --outDir out",
 		"watch-tests": "tsc -p . -w --outDir out",
@@ -57,9 +69,6 @@
 		"lint": "eslint src",
 		"test": "vscode-test"
 	},
-	"dependencies": {
-		"@vscode/vsce": "^3.2.2"
-	},
 	"devDependencies": {
 		"@types/mocha": "^10.0.10",
 		"@types/node": "20.x",
@@ -67,7 +76,8 @@
 		"@typescript-eslint/eslint-plugin": "^8.17.0",
 		"@typescript-eslint/parser": "^8.17.0",
 		"@vscode/test-cli": "^0.0.10",
-		"@vscode/test-electron": "^2.4.1",
+		"@vscode/test-electron": "^3.1.0",
+		"@vscode/vsce": "^4.1.1",
 		"esbuild": "^0.24.0",
 		"eslint": "^9.16.0",
 		"npm-run-all": "^4.1.5",
